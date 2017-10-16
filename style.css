@@ -1,0 +1,42 @@
+body{
+background: #004;
+
+}
+
+.main-canvas {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+
+
+}
+ #txt {
+ 	position: absolute;
+ background: #902;
+ width: 20px;
+ height: 20px;
+ top: 0;
+ left: 0;
+
+ }
+
+ #star1 {
+ 	position: absolute;
+ 	background: #656;
+ 	width: 60px;
+ 	height: 40px;
+ 	top: 0px;
+ 	left: 30px;
+
+ }
+ #stars2 {
+ 	position: absolute;
+ 	background: #656;
+ 	width: 60px;
+ 	height: 40px;
+ 	top: 0px;
+ 	left: 100px;
+
+ }
