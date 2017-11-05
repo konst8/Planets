@@ -1,5 +1,6 @@
 body{
-background: #004;
+background: url(space.jpg);
+
 
 }
 
@@ -18,25 +19,142 @@ background: #004;
  width: 20px;
  height: 20px;
  top: 0;
- left: 0;
+ right: 0;
 
  }
 
- #star1 {
- 	position: absolute;
- 	background: #656;
- 	width: 60px;
- 	height: 40px;
- 	top: 0px;
- 	left: 30px;
+ 
 
- }
- #stars2 {
- 	position: absolute;
- 	background: #656;
- 	width: 60px;
- 	height: 40px;
- 	top: 0px;
- 	left: 100px;
 
- }
+#button {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #0094d6;
+	width: 24px;
+	height: 50px;
+	font: 40px Georgia;
+	color: #fff;
+	text-align: center;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+	}
+input {
+	position: relative;
+	width: 80px;
+	left: 0px;
+}
+
+#s_panel {
+	position: fixed;
+	top: 0px;
+	left: -100px;
+	background: url(1384034193-3098664-nevseoboi.com.ua.jpg);
+	opacity: 1;
+	width: 100px;
+	font: 12px trebuchet ms;
+	height: 100%;
+	padding: 100px 0 0 0;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+	border-radius: 0 5px 0 0;
+	}
+#button:hover {
+	left: 100px;
+}
+#button:hover #s_panel {
+	left: 0;
+}
+
+#button2 {
+	position: fixed;
+	bottom: 0px;
+	right: 90px;
+	background: #0094d6;
+	width: 120px;
+	height: 25px;
+	font: 40px Georgia;
+	color: #fff;
+	text-align: center;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+	}
+#s_panel2 {
+	position: fixed;
+	bottom: -200px;
+	right: 0px;
+	background: url(http://co13.nevseoboi.com.ua/17/16399/1384034193-3098664-nevseoboi.com.ua.jpg);
+	opacity: 1;
+	text-align: center;
+	width: 300px;
+	height: 100px;
+	padding: 100px 0 0 0;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+	}
+#button2:hover {
+	bottom: 200px;
+}
+#button2:hover #s_panel2 {
+	bottom: 0;
+}
+
+#create_new_planet {
+	position: relative;
+ 	font: 23px trebuchet ms;
+ 	color: "White";
+ 	top: -40px;
+ 	left: 17px;
+    width: 30px;
+    height: 20px;
+}
+
+#realmode {
+	position: relative;
+	font: 15px trebuchet ms;
+	top: 12px;
+}
+
+#pausee {
+	position: absolute;
+      background: url(imgonline-com-ua-Resize-8DgxzjJc1E.png) no-repeat top;
+      bottom: 5px;
+      width: 30px;
+      height: 30px;  
+      left: 100px;
+      border: 0px;
+      opacity: 0;
+
+        
+}
+
+#zag {
+	position: relative;
+	top: -100px;
+	font: 23px trebuchet ms;
+}
+#tekst {
+	position: relative;
+	top: -110px;
+	font: 12px trebuchet ms;
+}
+
