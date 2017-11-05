@@ -130,7 +130,7 @@ var checkbox = document.getElementById("real");
       realmode = checkbox.checked;
       if(realmode)
       {
-      	alert("Now you start real mode, so you can fill lines with real mass and radius! Don't forget that accelerate must be muuuuch smaller than in normal mode!");
+      	alert("Now you start real mode, so you can fill lines with real mass! Don't forget that accelerate must be muuuuch smaller than in normal mode!");
       	G = 6.67408 * 0.00000000001;
       }
       else G = 6.67408;
