@@ -1,0 +1,83 @@
+<!DOCTYPE_HTML>
+<html>
+
+
+	<head>
+		<link rel="stylesheet" href="style.css">
+
+		<meta charset="utf-8">
+		<title>Planets</title>
+	</head>
+
+		<body>
+		<input type="button" name="pausee" id="pausee">
+
+        <canvas class = "main-canvas" id = "main-canvas"></canvas>
+
+        
+
+        <div id="mouse_coords_on_move"></div>
+		<div id="mouse_coords_on_click"></div>
+
+		
+
+		<div id="bottom_panel">
+
+		<div id="time"> time: </div>
+		<input type="range" id="settime" min="1" max="6000000" step="60000" value="1">
+		</div>
+		<div id="choordsofmouse">x= y= a=</div>
+		<button  type="button" id="create_new_planet"> Create</button>
+		<button type="button" id="button"><div id="menu">menu</div></button>
+	<div id="s_panel">
+		<div id="lineunder"></div>
+		<img src="Basic pic.png" id="Basicpic">
+
+		<p id="name">Name</p> 
+		<input type="text" id="nameofplanet" value="Earth">
+		<img src="name pic.png" id="picname">
+		<p id="mass">Mass</p>
+		<input type="text" id="mas" value="1.00">
+		<img src="mass pic.png" id="picmass">
+		<div id="massizm"><p id="massizmp">earth</p></div>
+		<p id="radius">Radius</p>
+		<input type="text" name="rad" id="rad" value="6371" readonly>
+		<img src="radius pic.png" id="picrad">
+		<div id="radizm"><p id="radizmp">km</p></div>
+
+
+		<div class="onoffswitch" id="Switch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+		<div class="Radiuswithcomparetomass">
+    <p>Radius with... </p>
+    <span class="hide-text">
+    	compare to mass
+    </span>
+</div>
+
+
+		<p id="density">Density</p>
+		<input type="text" name="Dens" id="Dens" value="5.51" readonly>
+		<img src="density pic.png" id="picdens">
+		<div id="densizm"><p id="densizmp">g/см³</p></div>
+		
+	</div>
+
+			
+		
+			
+			
+
+		<script src="Hellojs.js" defer ></script>
+
+			
+
+		</body>
+
+
+</html>
