@@ -13,6 +13,12 @@ background: url(space.jpg);
 
 
 }
+
+#settime{
+	position: fixed;
+	left: 580px;
+	width: 200px;
+}
  #txt {
  	position: absolute;
  background: #902;
@@ -23,110 +29,312 @@ background: url(space.jpg);
 
  }
 
- 
+#bottom_panel{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 30px;
+	background: #080808;
+	-webkit-border-radius: 5px 5px 0px 0px;
+	-moz-border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
+	opacity: 0.9;
+}
 
+#menu{
+	position: relative;
+	top:-4px;
+}
+#choordsofmouse{
+	position: fixed;
+	
+	bottom: 4px;
+	left: 80px;
+	background: #080808 ;
+	width: 350px;
+	height: 22px;
+	font: 18px Georgia;
+	opacity: 0.8;
+	color: #686868;
+}
 
+#time{
+	position: fixed;
+	
+	bottom: 4px;
+	left: 430px;
+	background: #080808 ;
+	width: 300px;
+	height: 22px;
+	font: 18px Georgia;
+	opacity: 0.8;
+	color: #686868;
+}
 #button {
 	position: fixed;
-	top: 0px;
-	left: 0px;
-	background: #0094d6;
-	width: 24px;
-	height: 50px;
-	font: 40px Georgia;
-	color: #fff;
+	box-shadow: 0 0 0 0 hsla(0, 0%, 0%, 0) inset;
+	bottom: 4px;
+	right: 4px;
+	background: #080808 ;
+	width: 60px;
+	height: 22px;
+	font: 18px Georgia;
+	outline:none;
+	color: #686868;
 	text-align: center;
-	-webkit-transition-duration: 0.3s;
-	-moz-transition-duration: 0.3s;
-	-o-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-border-radius: 0 5px 5px 0;
-	-moz-border-radius: 0 5px 5px 0;
-	border-radius: 0 5px 5px 0;
+	vertical-align: bottom;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
 	}
-input {
-	position: relative;
-	width: 80px;
-	left: 0px;
+#create_new_planet {
+	position: fixed;
+	box-shadow: 0 0 0 0 hsla(0, 0%, 0%, 0) inset;
+	bottom: 4px;
+	padding-top: 0px;
+	padding-left: 3px;
+	left: 4px;
+	background: #080808 ;
+	width: 60px;
+	height: 22px;
+	font: 17px Georgia;
+	outline:none;
+	color: #686868;
+	text-align: center;
+	vertical-align: bottom;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
 }
+	
+#Basicpic{
+	position: absolute;
+	top: 0px;
+	right: 227px
+}
+#lineunder{
+	position: absolute;
+	top: 54px;
+	width: 280px;
+	height: 2px;
+	background: #282828;
+}
+#nameofplanet{
+	position: absolute;
+	background: #181818;
+	top: 65px;
+	border: 0px;
+	width: 145px;
+	height: 25px;
+	right: 10px;
+	color: #787878 ;
+	font: 14px tahoma;
+	font-weight: 600;
+	padding: 8px;
+	outline:none;
+}
+#name{
+	position: absolute;
+	top: 50px;
+	color: #787878 ;
+	font: 16px tahoma;
+	right: 235px
+	
+}
+#picname{
+	position: absolute;
+	top: 65px;
+	right: 155px
+}
+
+#mas{
+	position: absolute;
+	background: #181818;
+	top: 100px;
+	border: 0px;
+	width: 110px;
+	height: 25px;
+	right: 45px;
+	color: #686868 ;
+	font: 12px tahoma;
+	font-weight: 600;
+	padding: 8px;
+	outline:none;
+}
+#picmass{
+	position: absolute;
+	top: 100px;
+	right: 155px
+}
+#mass{
+	position: absolute;
+	top: 85px;
+	color: #787878 ;
+	font: 16px tahoma;
+	right: 240px;
+	
+}
+#massizm{
+	position: absolute;
+	top: 100px;
+	height: 25px;
+	right: 10px;
+	width: 35px;
+	background: #181818;
+}
+#massizmp{
+	position: absolute;
+	top: -11px;
+	color: #787878 ;
+	font: 14px tahoma;
+	font-weight: 500;
+}
+
+
+#rad {
+	position: absolute;
+	background: #080808;
+	top: 135px;
+	border: 0px;
+	width: 100px;
+	height: 25px;
+	right: 55px;
+	color: #787878 ;
+	font: 12px tahoma;
+	font-weight: 600;
+	padding: 8px;
+	outline:none;
+}
+#radizm{
+	position: absolute;
+	top: 135px;
+	height: 25px;
+	right: 10px;
+	width: 45px;
+	background: #181818;
+}
+#radizmp{
+	position: absolute;
+	top: -11px;
+	right: 2px;
+	color: #787878 ;
+	font: 14px tahoma;
+	font-weight: 500;
+}
+#picrad{
+	position: absolute;
+	top: 135px;
+	right: 157px
+}
+#radius{
+	position: absolute;
+	top: 120px;
+	color: #787878 ;
+	font: 16px tahoma;
+	right: 227px;
+	
+}
+.Radiuswithcomparetomass{
+	position: absolute;
+	top: 156px;
+	right: 175px;
+	color: #787878 ;
+	font: 16px tahoma;
+	width: 100px;
+}
+.Radiuswithcomparetomass span{
+    display: none;
+    position: absolute; top: 16px; right: -183px;
+    width: 200px;
+   
+    
+}
+.Radiuswithcomparetomass:hover span{
+    display: block;
+    cursor: pointer;
+    height: auto;
+}
+
+
+#Switch{
+	position: absolute;
+	top: 175px;
+	right: 110px;
+}
+
+
+
+#Dens {
+	position: absolute;
+	background: #080808;
+	top: 205px;
+	border: 0px;
+	width: 90px;
+	height: 25px;
+	right: 65px;
+	color: #787878 ;
+	font: 12px tahoma;
+	font-weight: 600;
+	padding: 8px;
+	outline:none;
+}
+#densizm{
+	position: absolute;
+	top: 205px;
+	height: 25px;
+	right: 10px;
+	width: 45px;
+	background: #181818;
+}
+#densizmp{
+	position: absolute;
+	top: -11px;
+	right: 2px;
+	color: #787878 ;
+	font: 14px tahoma;
+	font-weight: 500;
+}
+#picdens{
+	position: absolute;
+	top: 205px;
+	right: 152px
+}
+#density{
+	position: absolute;
+	top: 190px;
+	color: #787878 ;
+	font: 16px tahoma;
+	right: 220px;
+	
+}
+
+
+
 
 #s_panel {
 	position: fixed;
-	top: 0px;
-	left: -100px;
-	background: url(1384034193-3098664-nevseoboi.com.ua.jpg);
-	opacity: 1;
-	width: 100px;
+	bottom: 30px;
+	right: -280px;
+	background: #080808 ;
+	opacity: 0.9;
+	width: 280px;
 	font: 12px trebuchet ms;
-	height: 100%;
+	font-weight: 600;
+	height: 350px;
 	padding: 100px 0 0 0;
-	-webkit-transition-duration: 0.3s;
-	-moz-transition-duration: 0.3s;
-	-o-transition-duration: 0.3s;
-	transition-duration: 0.3s;
+
+	
 	-webkit-border-radius: 0 5px 0 0;
 	-moz-border-radius: 0 5px 0 0;
 	border-radius: 0 5px 0 0;
 	}
-#button:hover {
-	left: 100px;
-}
-#button:hover #s_panel {
-	left: 0;
-}
 
-#button2 {
-	position: fixed;
-	bottom: 0px;
-	right: 90px;
-	background: #0094d6;
-	width: 120px;
-	height: 25px;
-	font: 40px Georgia;
-	color: #fff;
-	text-align: center;
-	-webkit-transition-duration: 0.3s;
-	-moz-transition-duration: 0.3s;
-	-o-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
-	}
-#s_panel2 {
-	position: fixed;
-	bottom: -200px;
-	right: 0px;
-	background: url(http://co13.nevseoboi.com.ua/17/16399/1384034193-3098664-nevseoboi.com.ua.jpg);
-	opacity: 1;
-	text-align: center;
-	width: 300px;
-	height: 100px;
-	padding: 100px 0 0 0;
-	-webkit-transition-duration: 0.3s;
-	-moz-transition-duration: 0.3s;
-	-o-transition-duration: 0.3s;
-	transition-duration: 0.3s;
-	-webkit-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
-	}
-#button2:hover {
-	bottom: 200px;
-}
-#button2:hover #s_panel2 {
-	bottom: 0;
-}
 
-#create_new_planet {
-	position: relative;
- 	font: 23px trebuchet ms;
- 	color: "White";
- 	top: -40px;
- 	left: 17px;
-    width: 30px;
-    height: 20px;
-}
+
+
+
+
 
 #realmode {
 	position: relative;
@@ -158,3 +366,51 @@ input {
 	font: 12px trebuchet ms;
 }
 
+
+
+
+.onoffswitch {
+    position: relative; width: 40px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #E3E3E3; border-radius: 50px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 10px; padding: 0; line-height: 10px;
+    font-size: 19px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "";
+    padding-left: 5px;
+    background-color: #A0A0A0; color: #B8B8B8;
+}
+.onoffswitch-inner:after {
+    content: "";
+    padding-right: 5px;
+    background-color: #FFFFFF; color: #B8B8B8;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 15px; margin: -2.5px;
+    background: #989898;
+    position: absolute; top: 0; bottom: 0;
+    right: 26px;
+    border: 2px solid #E3E3E3; border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}

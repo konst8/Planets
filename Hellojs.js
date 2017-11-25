@@ -1,6 +1,6 @@
 "use strict";
 
-var G = 6.67408// * 0.00000000001;
+var G = 6.67408 * 0.00000000001;
 var canvas = document.getElementById('main-canvas');
 var ctx = canvas.getContext('2d');
 var check = false;
@@ -123,29 +123,62 @@ var yeb = ye;
 
 var currx = 100;
 var curry = 100;
-var realmode;
+var checkboxv = 1;
 
-var checkbox = document.getElementById("real");
+var checkbox = document.getElementById("myonoffswitch");
     checkbox.onchange = function() {
-      realmode = checkbox.checked;
-      if(realmode)
+      if(!checkboxv)
+      {		
+      	checkboxv = 1;
+      	rad.setAttribute("readonly","");
+      	rad.style.background = "#080808";
+      	densvalue = 5.5134;
+      } else
       {
-      	alert("Now you start real mode, so you can fill lines with real mass! Don't forget that accelerate must be muuuuch smaller than in normal mode!");
-      	G = 6.67408 * 0.00000000001;
+      	checkboxv = 0;
+      	rad.removeAttribute("readonly");
+      	rad.style.background = "#181818";
       }
-      else G = 6.67408;
+      
     };
+    canvas.onclick = function(e)
+	{
+		if (!e) e = window.event;
+		for (var jkl = 0; jkl < arrayofplanets.length; jkl++) 
+		{
+      	if(((getX(e) <= arrayofplanets[jkl].x + arrayofplanets[jkl].radius) && (getX(e) >= arrayofplanets[jkl].x - arrayofplanets[jkl].radius)) && ((getY(e) <= arrayofplanets[jkl].y + arrayofplanets[jkl].radius) && (getY(e) >= arrayofplanets[jkl].y - arrayofplanets[jkl].radius)))
+      	{
+      		currnumplanet= jkl+1;
+      		mas.value = arrayofplanets[currnumplanet-1].mass / (5.97219 * 1000000000000000000000000);
+			rad.value = arrayofplanets[currnumplanet-1].radius * 1000;
+			Dens.value = densvalue;
+      	
+      	break;
+      }
+      	//else currnumplanet = 0;
+      }
+		
+		}
  
-
+var sovpalo = 0;
 function vectorchangecoords() //------------- возвращать значения во входные переменные х и y!
 {
 	canvas.onmousedown = function(e)
-	{
+	{	sovpalo = 0;
+		for (var jkl = 0; jkl < arrayofplanets.length; jkl++) 
+		{
+			if(jkl != colplanet-1)
+			if(((getX(e) <= arrayofplanets[jkl].x + arrayofplanets[jkl].radius) && (getX(e) >= arrayofplanets[jkl].x - arrayofplanets[jkl].radius)) && ((getY(e) <= arrayofplanets[jkl].y + arrayofplanets[jkl].radius) && (getY(e) >= arrayofplanets[jkl].y - arrayofplanets[jkl].radius)))
+				sovpalo = 1;
+		}
+      if(!sovpalo){
       p = 1;
       xe = getX(e);
       xeb = xe;
       ye = getY(e);
       yeb = ye;
+      currnumplanet = colplanet;
+}
     
 	}
 	canvas.onmouseup = function(e)
@@ -156,13 +189,15 @@ function vectorchangecoords() //------------- возвращать значен�
 	}
  	canvas.onmousemove = function(e)
 	{
+
 		if (!e) e = window.event;
 		if (e.altKey)
 		{
 			currx = dragx();
 			curry = dragy();
 			xe = currx;
-			ye = curry;	
+			ye = curry;
+			currnumplanet = colplanet;	
 		}
 		
 		else
@@ -175,6 +210,7 @@ function vectorchangecoords() //------------- возвращать значен�
 		xeb = xe;
 		ye = getY(e);
 		yeb = ye;
+
 	}
 	}	
 	}
@@ -190,19 +226,25 @@ var vx1 = 0;
 
 var vy1 = 0;
 
+function getRandomInt(min, max)
+{
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
 function setspeedx(x,xe)
 {
-	return (xe - x);
+	return (xe - x)/(scape);
 }
 
 function setspeedy(y,ye)
 {
-	return (ye - y) ;
+	return (ye - y)/(scape);
 }
 
 function rbetween(x,y,x1,y1)
 	{
-	return Math.sqrt((x - x1) * (x - x1) + (y - y1) * (y - y1));
+	return Math.sqrt((x - x1) * (x - x1) + (y - y1) * (y - y1))*1000 * scape;
 	} 
 
 function sin(y,y1,r) 
@@ -220,21 +262,33 @@ function cos(x,x1,r)
 
 create_new_planet.onmouseover = function()
 {
-	create_new_planet.style.font = "25px trebuchet ms";
+	
 	create_new_planet.style.color = "#FFFACD";
 }
 create_new_planet.onmouseout = function()
 {
-    create_new_planet.style.font = "23px trebuchet ms";
-    create_new_planet.style.color = "White";
+    
+
+    create_new_planet.style.color = "#686868";
 }
 
 
 
 var r = rbetween(x2,y2,x1,y1);
+var menuopen = 0;
 
-
-
+button.onclick = function(e)
+{
+	if(menuopen)
+	{
+		s_panel.style.right = "-280px";
+		menuopen = 0;
+	} else
+	{
+		s_panel.style.right = "0px";
+		menuopen = 1;
+	}
+}
 
 
 
@@ -256,7 +310,7 @@ var rbetweenplanets = [];
 var arrayofvx  = [];
 var arrayofvy = [];
 var currnumplanet = 0;
-
+var colplanet = 0;
 var testcount = 0;
 
 create_new_planet.onclick = function(e)
@@ -267,10 +321,11 @@ create_new_planet.onclick = function(e)
 		curry = 100;
 		xe = 100;
 		ye = 100;
-	currnumplanet++;
+	colplanet++;
 	e = e || window.event;
-	arrayofplanets[currnumplanet - 1] = {
-		mass : 100,
+	arrayofplanets[colplanet - 1] = {
+		name : "planet " + colplanet,
+		mass : 5.97219 * 1000000000000000000000000,
 		x : 100,
 		y : 100,
 		vx : 0,
@@ -278,9 +333,15 @@ create_new_planet.onclick = function(e)
 		radius : 10,
 		color : "red" 
 	}
-	arrayofplanets[currnumplanet-1].mass = +(document.getElementById("mas").value);
-	arrayofplanets[currnumplanet-1].radius = +(document.getElementById("rad").value);
-	arrayofplanets[currnumplanet-1].color = document.getElementById("colo").value;
+	mas.value = 1;
+	rad.value = 6371;
+	nameofplanet.value = "planet " + colplanet;
+	arrayofplanets[colplanet-1].mass = +(document.getElementById("mas").value) * 5.97219 * 1000000000000000000000000;
+	arrayofplanets[colplanet-1].radius = +(document.getElementById("rad").value) / scape;
+	arrayofplanets[colplanet-1].color = "#" + getRandomInt(100000,999999);
+	currnumplanet = colplanet;
+	s_panel.style.right = "0px";
+		menuopen = 1;
 	
 }
 	
@@ -292,7 +353,10 @@ document.onkeydown = function(e)
 {
 	e = e || window.event;
 	if (e.which == 13)
+	{
 		ifenterpress = 1;
+
+	}
 }
 
 document.getElementById("pausee").onclick = function(e)
@@ -311,62 +375,170 @@ var drawflyline = [];
 for (var i = 0; i < 20; i++) {
 	drawflyline[i] = [];
 	}
+var densvalue = 5.5134;
+var radvalue = 6371;
 
-var timerate = 60;
+var name = [];
 
-document.getElementById("txt").innerHTML = timerate;
+var ac;
+var timespeed = 100000/60;
+var scape = 1000000;
+var timein = 0;
+var timeou = 0;
+
+var perehod = 0;
+
 var start = Date.now();
 var timer = setInterval(function() {
   	var timePassed = Date.now() - start;
 
   	clearCanvas();
+
+  	
+  	
+  	if(checkboxv)
+  	{
+  	radvalue = Math.cbrt(((+mas.value * 5.97219 * 1000000000000000000000000 * 1000)/densvalue) * 3 / 4 /3.14159/(1000*1000*1000*100*100*100));
+  	radvalue = radvalue.toFixed(4);
+  	rad.value = radvalue;
+    }
+  	else
+  	{ densvalue = (+mas.value * 5.97219 * 1000000000000000000000000 * 1000)/((4*3.14159*rad.value*1000*100*rad.value*1000*100*rad.value*1000*100)/3);
+  	densvalue = densvalue.toFixed(4);
+  	radvalue = rad.value;
+    }
+    if(radvalue * 1000 <= (2 * (G * mas.value * 5.97219 * 1000000000000000000000000) /(300000000*300000000)))
+    	Dens.value = "Infinity";
+    else
+  	Dens.value = densvalue;
+  	
 	window.onresize = resizeCanvas();
-	if(currnumplanet > 0 && !ifenterpress)
+
+
+
+
+
+
+	if(colplanet > 0 && !ifenterpress)
 	{
+		
 	vectorchangecoords();
-	arrayofvx[currnumplanet-1] = xe;
-	arrayofvy[currnumplanet-1] = ye;
-	arrayofplanets[currnumplanet-1].x = currx;
- 	arrayofplanets[currnumplanet-1].y = curry;
+	if(colplanet-1 >= 0 && colplanet==currnumplanet)
+	{
+		if(!perehod)
+		{
+			nameofplanet.value = arrayofplanets[colplanet-1].name;
+			mas.value = arrayofplanets[colplanet-1].mass / (5.97219 * 1000000000000000000000000);
+			rad.value = arrayofplanets[colplanet-1].radius * scape;
+			perehod = 1;
+		}
+	arrayofplanets[colplanet-1].name = (document.getElementById("nameofplanet").value);
+	arrayofplanets[colplanet-1].mass = +(document.getElementById("mas").value) * 5.97219 * 1000000000000000000000000;
+	arrayofplanets[colplanet-1].radius = +(document.getElementById("rad").value)/scape;
+	
+	arrayofvx[colplanet-1] = xe;
+	arrayofvy[colplanet-1] = ye;
+	arrayofplanets[colplanet-1].x = currx;
+ 	arrayofplanets[colplanet-1].y = curry;
+ 	arrayofplanets[colplanet-1].vx = setspeedx(arrayofplanets[colplanet-1].x,xe);
+
+ 	arrayofplanets[colplanet-1].vy = setspeedx(arrayofplanets[colplanet-1].y,ye);
+ 
+ } else perehod = 0;
  	for (var i = 0; i < arrayofplanets.length; i++) {
  		for (var counter = 0; counter < arrayofplanets.length; counter++) {
  			rbetweenplanets[i*10 + counter] = rbetween(arrayofplanets[i].x,arrayofplanets[i].y,arrayofplanets[counter].x,arrayofplanets[counter].y);
  		}
  	}
- 	arrayofplanets[currnumplanet-1].vx = setspeedx(arrayofplanets[currnumplanet-1].x,xe);
- 	arrayofplanets[currnumplanet-1].vy = setspeedx(arrayofplanets[currnumplanet-1].y,ye);
+ 	
+ 	
+ 
  	if(!ifenterpress)
  	{
- 	for (var i = testcount; i < arrayofplanets.length; i++) {
-	drawvector(arrayofvx[i],arrayofvy[i],arrayofplanets[i].x,arrayofplanets[i].y);
+
+ 		
+ 		for (var i = testcount; i < arrayofplanets.length; i++) {
+			drawvector(arrayofvx[i],arrayofvy[i],arrayofplanets[i].x,arrayofplanets[i].y);
+		}
 	}
-}
- 	for (var i = 0; i < arrayofplanets.length; i++) {
+	if(currnumplanet-1 >= 0)
+		{
+			drawcircle(arrayofplanets[currnumplanet-1].x,arrayofplanets[currnumplanet-1].y,arrayofplanets[currnumplanet-1].radius + 1,"White");
+		
+		ac = Math.sqrt(arrayofplanets[currnumplanet-1].vx* scape *  arrayofplanets[currnumplanet-1].vx*scape + arrayofplanets[currnumplanet-1].vy*scape * arrayofplanets[currnumplanet-1].vy*scape);
+		ac=ac.toFixed(4);
+		document.getElementById("choordsofmouse").innerHTML="x=" + arrayofplanets[currnumplanet-1].x.toFixed(4) + " y=" + arrayofplanets[currnumplanet-1].y.toFixed(4) + " v=" + ac + "km/s";
+		}
+
+ 	for (var i = 0; i < arrayofplanets.length; i++) 
+ 	{
 		drawcircle(arrayofplanets[i].x,arrayofplanets[i].y,arrayofplanets[i].radius,arrayofplanets[i].color);
 	}
-	for (var cur = 0; cur < arrayofplanets.length; cur++) {
-			for (var i = 0; i < 4999; i += 2) {
+	for (var cur = 0; cur < arrayofplanets.length; cur++) 
+	{
+			for (var i = 0; i < 44999; i += 40) 
+			{
 				drawflyline[cur][i] = arrayofplanets[cur].x;
   				drawflyline[cur][i+1] = arrayofplanets[cur].y;
   			}
-  		}
-}if(ifenterpress)
+  	}
+}
+
+
+
+
+
+
+
+if(ifenterpress)
 {
-	testcount = currnumplanet;
+	timespeed = +settime.value/60;
+	//alert(arrayofplanets[colplanet-1].vx);
+		
+	timein += timespeed;
+	if(timein <= 60)
+	{
+		
+	document.getElementById("time").innerHTML="time: " + timein.toFixed(2) + " sec";
+	}
+	else if(timein <= 3600)
+	{
+		
+		timeou = timein / 60;
+		timeou = timeou.toFixed(1);
+	document.getElementById("time").innerHTML="time: " + timeou + " min";
+	}
+	else if(timein <= 86400)
+	{
+		
+		timeou = timein / 3600;
+		timeou = timeou.toFixed(1);
+	document.getElementById("time").innerHTML="time: " + timeou + " hours";
+	}
+	else
+	{
+		
+		timeou = timein /86400;
+		timeou = timeou.toFixed(1);
+
+	document.getElementById("time").innerHTML="time: " + timeou + " days";
+	}
+
+	testcount = colplanet;
 	
 		for (var i = 0; i < arrayofplanets.length; i++) {
 			for (var cuo = 0; cuo < arrayofplanets.length; cuo++) {
 				if(i != cuo)
 				{
-				arrayofplanets[i].vx += (a(arrayofplanets[cuo].mass,rbetweenplanets[i*10 + cuo]) * cos(arrayofplanets[cuo].x,arrayofplanets[i].x,rbetweenplanets[i*10 + cuo]) * 100);
-				arrayofplanets[i].vy += (a(arrayofplanets[cuo].mass,rbetweenplanets[i*10 + cuo]) * sin(arrayofplanets[cuo].y,arrayofplanets[i].y,rbetweenplanets[i*10 + cuo]) * 100);
+				arrayofplanets[i].vx += (a(arrayofplanets[cuo].mass,rbetweenplanets[i*10 + cuo]) * timespeed * cos(arrayofplanets[cuo].x,arrayofplanets[i].x,rbetweenplanets[i*10 + cuo]));
+				arrayofplanets[i].vy += (a(arrayofplanets[cuo].mass, rbetweenplanets[i*10 + cuo]) * timespeed * sin(arrayofplanets[cuo].y,arrayofplanets[i].y,rbetweenplanets[i*10 + cuo]));
 				}
 			}
 
 		}
 		for (var i = 0; i < arrayofplanets.length; i++) {
-			arrayofplanets[i].x += arrayofplanets[i].vx/100;
-			arrayofplanets[i].y += arrayofplanets[i].vy/100;
+			arrayofplanets[i].x += arrayofplanets[i].vx * timespeed;
+			arrayofplanets[i].y += arrayofplanets[i].vy * timespeed;
 		}
 
 		for (var i = 0; i < arrayofplanets.length; i++) {
@@ -383,20 +555,21 @@ var timer = setInterval(function() {
 				drawflyline[i][numofdl] = arrayofplanets[i].x;
   				drawflyline[i][numofdl+1] = arrayofplanets[i].y;
   			}
+
   			for (var i = 0; i < arrayofplanets.length; i++) {
-  				for (var j = 0; j < 4997; j += 4) {
+  				for (var j = 0; j < 44997; j += 40) {
   					drawcircle(drawflyline[i][j],drawflyline[i][j+1],0.5,arrayofplanets[i].color);
   				}
   			}
-  			if(numofdl < 4998)
-  				numofdl += 4;
+  			if(numofdl < 44998)
+  				numofdl += 40;
   			else numofdl = 0;
 
   		for (var i = 0; i < arrayofplanets.length; i++) {
   			for (var j = 0; j < arrayofplanets.length; j++) {
   				if(i != j)
   				{
-  					if(rbetweenplanets[i*10 + j] <= (arrayofplanets[i].radius + arrayofplanets[j].radius))
+  					if(rbetweenplanets[i*10 + j]/1000 <= (arrayofplanets[i].radius*scape + arrayofplanets[j].radius*scape))
   					{
   						alert("You Lose");
   						ifenterpress = 0;
@@ -406,10 +579,17 @@ var timer = setInterval(function() {
 						arrayofvy = [];
 						currnumplanet = 0;
 						testcount = 0;
+						colplanet = 0;
   					}
   				}
   			}
   		}
+  		if(currnumplanet-1 >= 0)
+		{
+		ac = Math.sqrt(arrayofplanets[currnumplanet-1].vx* scape  *  arrayofplanets[currnumplanet-1].vx*scape  + arrayofplanets[currnumplanet-1].vy*scape * arrayofplanets[currnumplanet-1].vy*scape);
+		document.getElementById("choordsofmouse").innerHTML="x=" + arrayofplanets[currnumplanet-1].x.toFixed(4) + " y=" + arrayofplanets[currnumplanet-1].y.toFixed(4) + " v=" + ac.toFixed(4) + " km/s";
+		drawcircle(arrayofplanets[currnumplanet-1].x,arrayofplanets[currnumplanet-1].y,arrayofplanets[currnumplanet-1].radius + 1,"White");
+	}
   		for (var i = 0; i < arrayofplanets.length; i++) {
 			drawcircle(arrayofplanets[i].x,arrayofplanets[i].y,arrayofplanets[i].radius,arrayofplanets[i].color);
 		}
@@ -496,7 +676,7 @@ twostars();
 */
 
 
-},1000/timerate)
+},1000/60)
 
 
 

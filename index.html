@@ -13,39 +13,64 @@
 		<input type="button" name="pausee" id="pausee">
 
         <canvas class = "main-canvas" id = "main-canvas"></canvas>
+
         
 
         <div id="mouse_coords_on_move"></div>
 		<div id="mouse_coords_on_click"></div>
-		<div id="button2">
-	<div id="s_panel2">
-		<div id="zag">TIPS</div>
-		<div id="tekst">
-		<p>1. Fill 3 LINES with parametrs(first is mass, second is radius, third is color) of your planet and click on "CREATE PLANET"! Remember that mass should be small, about 100-1000. If you want to create real planets you should press "Real mode" checkbox.</p>
 
-			<p>2.Press "ALT" and move mouse to relocate your planet. To set up acceleration hold your LEFT MOUSE BUTTON and move it. If you end set up of planet, press ENTER and your planet start moving! </p>
+		
+
+		<div id="bottom_panel">
+
+		<div id="time"> time: </div>
+		<input type="range" id="settime" min="1" max="6000000" step="60000" value="1">
 		</div>
-	</div>
-</div>
-		<p id='txt'></p>
-		
-		<div id="button">
+		<div id="choordsofmouse">x= y= a=</div>
+		<button  type="button" id="create_new_planet"> Create</button>
+		<button type="button" id="button"><div id="menu">menu</div></button>
 	<div id="s_panel">
-		<div id="create_new_planet"> Create Planet </div>
-		<input type="text" name="mass" id="mas"> mass
-		<input type="text" name="radius" id="rad"> radius in px
-		<input type="text" name="color" id="colo"> color(Eng)
-		<p id="realmode">Realistic mode</p>
-		<input type="checkbox" id="real"> 
+		<div id="lineunder"></div>
+		<img src="Basic pic.png" id="Basicpic">
+
+		<p id="name">Name</p> 
+		<input type="text" id="nameofplanet" value="Earth">
+		<img src="name pic.png" id="picname">
+		<p id="mass">Mass</p>
+		<input type="text" id="mas" value="1.00">
+		<img src="mass pic.png" id="picmass">
+		<div id="massizm"><p id="massizmp">earth</p></div>
+		<p id="radius">Radius</p>
+		<input type="text" name="rad" id="rad" value="6371" readonly>
+		<img src="radius pic.png" id="picrad">
+		<div id="radizm"><p id="radizmp">km</p></div>
 
 
+		<div class="onoffswitch" id="Switch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+    <label class="onoffswitch-label" for="myonoffswitch">
+        <span class="onoffswitch-inner"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+		<div class="Radiuswithcomparetomass">
+    <p>Radius with... </p>
+    <span class="hide-text">
+    	compare to mass
+    </span>
+</div>
+
+
+		<p id="density">Density</p>
+		<input type="text" name="Dens" id="Dens" value="5.51" readonly>
+		<img src="density pic.png" id="picdens">
+		<div id="densizm"><p id="densizmp">g/см³</p></div>
 		
 	</div>
-</div>
+
 			
 		
 			
-
 			
 
 		<script src="Hellojs.js" defer ></script>
