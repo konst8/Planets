@@ -90,9 +90,9 @@ function drawvector(xd,yd,x,y)
 	
   	ctx.beginPath();
   	ctx.arc(xd, yd, 4, 0, 2 * Math.PI, false);
-    ctx.fillStyle = "White";
+    ctx.fillStyle = "Purple";
     ctx.fill();
-    ctx.strokeStyle = "White";
+    ctx.strokeStyle = "Purple";
     ctx.moveTo(x,y);
  	ctx.lineTo(xd,yd);
 	ctx.lineWidth = 1;
@@ -364,10 +364,6 @@ document.onkeydown = function(e)
 	}
 }
 
-document.getElementById("pausee").onclick = function(e)
-{
-	document.getElementById("pausee").style.bottom = "30px";
-}
 
 
 
@@ -439,7 +435,12 @@ var timer = setInterval(function() {
 		}
 	arrayofplanets[colplanet-1].name = (document.getElementById("nameofplanet").value);
 	arrayofplanets[colplanet-1].mass = +(document.getElementById("mas").value) * 5.97219 * 1000000000000000000000000;
+	if(document.getElementById("rad").value != "Infinity")
 	arrayofplanets[colplanet-1].radius = +(document.getElementById("rad").value)/scape;
+	else{
+		arrayofplanets[colplanet-1].radius = 4;
+		arrayofplanets[colplanet-1].color = "Black";
+	}
 	
 	arrayofvx[colplanet-1] = xe;
 	arrayofvy[colplanet-1] = ye;
