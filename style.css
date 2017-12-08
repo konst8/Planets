@@ -55,7 +55,7 @@ background: url(space.jpg);
 	width: 350px;
 	height: 22px;
 	font: 18px Georgia;
-	opacity: 0.8;
+	opacity: 0.9;
 	color: #686868;
 }
 
@@ -235,6 +235,10 @@ background: url(space.jpg);
 	right: 227px;
 	
 }
+
+#tips{
+
+}
 .Radiuswithcomparetomass{
 	position: absolute;
 	top: 156px;
@@ -331,40 +335,6 @@ background: url(space.jpg);
 	}
 
 
-
-
-
-
-
-#realmode {
-	position: relative;
-	font: 15px trebuchet ms;
-	top: 12px;
-}
-
-#pausee {
-	position: absolute;
-      background: url(imgonline-com-ua-Resize-8DgxzjJc1E.png) no-repeat top;
-      bottom: 5px;
-      width: 30px;
-      height: 30px;  
-      left: 100px;
-      border: 0px;
-      opacity: 0;
-
-        
-}
-
-#zag {
-	position: relative;
-	top: -100px;
-	font: 23px trebuchet ms;
-}
-#tekst {
-	position: relative;
-	top: -110px;
-	font: 12px trebuchet ms;
-}
 
 
 

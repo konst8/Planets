@@ -1,5 +1,10 @@
 "use strict";
 
+var img = new Image();
+img.src = "space.jpg";
+img.onload = function() {
+  
+
 var G = 6.67408 * 0.00000000001;
 var canvas = document.getElementById('main-canvas');
 var ctx = canvas.getContext('2d');
@@ -85,9 +90,9 @@ function drawvector(xd,yd,x,y)
 	
   	ctx.beginPath();
   	ctx.arc(xd, yd, 4, 0, 2 * Math.PI, false);
-    ctx.fillStyle = "White";
+    ctx.fillStyle = "Purple";
     ctx.fill();
-    ctx.strokeStyle = "White";
+    ctx.strokeStyle = "Purple";
     ctx.moveTo(x,y);
  	ctx.lineTo(xd,yd);
 	ctx.lineWidth = 1;
@@ -359,10 +364,6 @@ document.onkeydown = function(e)
 	}
 }
 
-document.getElementById("pausee").onclick = function(e)
-{
-	document.getElementById("pausee").style.bottom = "30px";
-}
 
 
 
@@ -434,7 +435,12 @@ var timer = setInterval(function() {
 		}
 	arrayofplanets[colplanet-1].name = (document.getElementById("nameofplanet").value);
 	arrayofplanets[colplanet-1].mass = +(document.getElementById("mas").value) * 5.97219 * 1000000000000000000000000;
+	if(document.getElementById("rad").value != "Infinity")
 	arrayofplanets[colplanet-1].radius = +(document.getElementById("rad").value)/scape;
+	else{
+		arrayofplanets[colplanet-1].radius = 4;
+		arrayofplanets[colplanet-1].color = "Black";
+	}
 	
 	arrayofvx[colplanet-1] = xe;
 	arrayofvy[colplanet-1] = ye;
@@ -492,6 +498,10 @@ var timer = setInterval(function() {
 
 if(ifenterpress)
 {
+
+
+
+
 	timespeed = +settime.value/60;
 	//alert(arrayofplanets[colplanet-1].vx);
 		
@@ -598,85 +608,9 @@ if(ifenterpress)
   	
 	
 
-    /*au = au + 0.01;
-    au2 = au2 + 0.01;
-function twostars() 
-	{
-  	x2 = canvas.width/2 + 50 * Math.cos(au2);	//
-  	y2 = canvas.height/2 + 50 * Math.sin(au2);	//
-  									// вращение системы из двух звезд
-  	x3 = canvas.width/2 + 50 * Math.cos(au);	//
-  	y3 = canvas.height/2 + 50 * Math.sin(au);	//
-  	r13 = rbetween(x1,y1,x3,y3);
-  	r = rbetween(x2,y2,x1,y1);
-  	if (Math.abs(r) < 42 || Math.abs(r13) < 42)
-  		clearInterval(timer);
-  	x1 = x1 + vx1/100;
-  	y1 = y1 + vy1/100;
-  	vx1 = vx1 + ((a(100,r) * cos(x2,x1,r)) * 100) + ((a(100,r13) * cos(x3,x1,r13)) * 100) + 0.001;
-  	vy1 = vy1 + ((a(100,r) * sin(y2,y1,r)) * 100) + ((a(100,r13) * sin(y3,y1,r13)) * 100) + 0.001;
-  	drawflyline[i] = x1;
-  	drawflyline[i+1] = y1;
-
-  	for (var j = 0; j < 4999; j += 2) {
-  		drawcircle(drawflyline[j],drawflyline[j+1],0.5,"White");
-  	}
-  	if(i < 4998)
-  	i += 2;
-  	else i = 0;
-  	drawcircle(x1,y1,r1,"green");
-  	drawcircle(x3,y3,r2,"yellow");  //
-  	drawcircle(x2,y2,r2,"red");		//
-	}
-function onestar() 
-	{
-	
-  	vy2 = vy2 + (a(0.001,r) * sin(y1,y2,r) * 100);	//
-    vx2 = vx2 + (a(0.001,r) * cos(x1,x2,r) * 100);	//
-    												// вращение одной звезды
-    x2 = x2 + vx2/100;								//
-    y2 = y2 + vy2/100;								//
-
-    r = rbetween(x2,y2,x1,y1);
-
-    if (Math.abs(r) < 42)
-    {
-  	clearInterval(timer);
-  	alert("You Lose!");
-  	}
-
-  	
-  	vx1 = vx1 + ((a(100,r) * cos(x2,x1,r)) * 100) + 0.001;//к вопросу о том что за "+0.001". без этого тело будет летать по элептической орбите стабильно как и происходило бы на самом деле
-  	vy1 = vy1 + ((a(100,r) * sin(y2,y1,r)) * 100) + 0.001;//однако таких идеальных ситуаций не бывает т.к на тело действует бесконечное множество других тел
-  														// и что бы было интереснее я сделал погрешность на это
-  	x1 = x1 + vx1/100;
-  	y1 = y1 + vy1/100;
-
-  	drawflyline[i] = x1;
-  	drawflyline[i+1] = y1;
-
-  	for (var j = 0; j < 4999; j += 2) {
-  		drawcircle(drawflyline[j],drawflyline[j+1],0.5,"White");
-  	}
-  	if(i < 4998)
-  	i += 2;
-  	else i = 0;
-
-  	drawcircle(x1,y1,r1,"green");
-
-
-    drawcircle(x2,y2,r2,"red");	
-	}
-
-clearCanvas();	
-if (starvar == 1)
-onestar();
-else if (starvar == 2)
-twostars();	
-*/
-
+   
 
 },1000/60)
 
-
+}
 
